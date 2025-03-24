@@ -5,6 +5,7 @@ using EShop.Application;
 
 namespace EShopService.Controllers;
 
+using EShop.Domain.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
@@ -17,21 +18,31 @@ public class CreditCardController : ControllerBase
     {
         var cardService = new CreditCardService();
 
-        if (!cardService.ValidateCardNumber(cardNumber))
+        try 
+        {
+            cardService.ValidateCardNumber(cardNumber);
+            string issuer = cardService.GetCardType(cardNumber);
+            string[] supported_issuers = { "Visa", "American Express", "Mastercard" };
+
+            if (issuer == null || !supported_issuers.Contains(issuer))
+            {
+                return StatusCode(406, "Error 406: Unsupported card issuer");
+            }
+            return Ok($"Valid card. Issuer: {issuer}");
+            
+        }
+        catch (CardNumberTooLongException)
+        {
+            return StatusCode(414, "Error 414: Carn number too long");
+        }
+        catch (CardNumberInvalidException)
         {
             return StatusCode(400, "Error 400: Invalid card number");
-            //Niepoprawny, za długi numer za zwrócić błąd 414
-            //Niepoprawny, za krótki lub niezgodny z walidacja sumy kontrolnej za zwrócić błąd 400
         }
-
-        string issuer = cardService.GetCardType(cardNumber);
-        string[] supported_issuers = { "Visa", "American Express", "Mastercard" };
-
-        if (issuer == null || !supported_issuers.Contains(issuer))
+        catch (CardNumberTooShortException)
         {
-            return StatusCode(406, "Error 406: Unsupported card issuer");
+            return StatusCode(400, "Error 400: Invalid card number");
         }
-
-        return Ok($"Valid card. Issuer: {issuer}");
+        
     }
 }
