@@ -6,6 +6,7 @@ using EShop.Application;
 namespace EShopService.Controllers;
 
 using EShop.Domain.Exceptions;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
@@ -13,10 +14,13 @@ using Microsoft.AspNetCore.SignalR;
 [Route("api/credit-card")]
 public class CreditCardController : ControllerBase
 {
+
     [HttpPost("validate")]
     public IActionResult ValidateCard([FromBody] string cardNumber)
     {
+
         var cardService = new CreditCardService();
+        //dodać dependency injection
 
         try 
         {

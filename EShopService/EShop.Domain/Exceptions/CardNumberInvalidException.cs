@@ -5,14 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EShop.Domain.Exceptions;
-
 public class CardNumberInvalidException : Exception
 {
-    public CardNumberInvalidException() { }
-    public CardNumberInvalidException(string message = "Card number invalid")
-    {
-        message = "Card number invalid";
-    }
+    public CardNumberInvalidException() : base("Card Number is invalid") { }
 
-    public CardNumberInvalidException(string message, Exception innerException) : base(message, innerException) { }
+    public CardNumberInvalidException(Exception innerException) : base("Card Number is invalid", innerException) { }
 }

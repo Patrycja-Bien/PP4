@@ -1,6 +1,16 @@
+using EShop.Application;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using EShop.Domain.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container
+builder.Services.AddScoped<ICreditCardService, CreditCardService>();
+var services = new ServiceCollection();
+
+services.AddDbContext<DataContext>(options =>
+    options.UseInMemoryDatabase("TestDatabase"));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
