@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EShop.Domain.Seeders;
 
-interface IEShopSeeder
+public interface IEShopSeeder
 {
-
+    public Task Seed();
 }

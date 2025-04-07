@@ -23,7 +23,13 @@ public class EShopSeeder(DataContext context) : IEShopSeeder
 
             context.Products.AddRange(products);
             context.SaveChanges();
+            var seededProducts = context.Products.ToList();
+            foreach (var product in seededProducts)
+            {
+                Console.WriteLine($"Seeded product: {product.Name}");
 
+
+            }
         }
     }
 }
