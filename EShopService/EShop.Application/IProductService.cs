@@ -9,9 +9,8 @@ namespace Eshop.Application;
 
 public interface IProductService
 {
-    public Product GetProduct(int id);
-    public bool DeleteProduct(int id);
-    public void UpdateProduct(Product product);
-    public IEnumerable<Product> GetProducts();
-    public void AddProduct(Product product);
+    public Task<List<Product>> GetAllAsync();
+    Task<Product> GetAsync(int id);
+    Task<Product> Update(Product product);
+    Task<Product> Add(Product product);
 }

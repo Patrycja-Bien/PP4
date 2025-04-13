@@ -10,35 +10,37 @@ namespace Eshop.Application;
 
 public class ProductService : IProductService
 {
-    private readonly IProductRepository _productRepository;
-
-    public ProductService(IProductRepository productRepository)
+    private IProductRepository _repository;
+    public ProductService(IProductRepository repository)
     {
-        _productRepository = productRepository;
-    }
-    public Product GetProduct(int id)
-    {
-        return _productRepository.GetProductById(id);
-
-    }
-    public IEnumerable<Product> GetProducts()
-    {
-        return _productRepository.GetAllProducts();
+        _repository = repository;
     }
 
-    public void AddProduct(Product product)
+    public async Task<List<Product>> GetAllAsync()
     {
-        _productRepository.AddProduct(product);
-    }
-    public bool DeleteProduct(int id)
-    {
-        return _productRepository.DeleteProduct(id);
+        var result = await _repository.GetAllProductAsync();
+
+        return result;
     }
 
-    public void UpdateProduct(Product product)
+    public async Task<Product> GetAsync(int id)
     {
-        _productRepository.UpdateProduct(product);
+        var result = await _repository.GetProductAsync(id);
+
+        return result;
     }
 
+    public async Task<Product> Update(Product product)
+    {
+        var result = await _repository.UpdateProductAsync(product);
 
+        return result;
+    }
+
+    public async Task<Product> Add(Product product)
+    {
+        var result = await _repository.AddProductAsync(product);
+
+        return result;
+    }
 }

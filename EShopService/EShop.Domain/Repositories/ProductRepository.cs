@@ -12,42 +12,33 @@ namespace EShop.Domain.Repositories
     {
         private readonly DataContext _context;
 
-        public ProductRepository(DataContext context)
+        public ProductRepository(DataContext dataContext)
         {
-            _context = context;
-        }
-        public void AddProduct(Product product)
-        {
-            _context.Add(product);
-            _context.SaveChanges();
+            _context = dataContext;
         }
 
-        public bool DeleteProduct(int id)
+        public async Task<Product> AddProductAsync(Product product)
         {
-            var product = _context.Products.Find(id);
-            if (product != null)
-            {
-                _context.Remove(product);
-                _context.SaveChanges();
-                return true;
-            }
-            return false;
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+            return product;
         }
 
-        public IEnumerable<Product> GetAllProducts()
+        public async Task<List<Product>> GetAllProductAsync()
         {
-            return _context.Products.ToList();
+            return await _context.Products.ToListAsync();
         }
 
-        public Product GetProductById(int id)
+        public async Task<Product> GetProductAsync(int id)
         {
-            return _context.Products.Find(id);
+            return await _context.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
-        public void UpdateProduct(Product product)
+        public async Task<Product> UpdateProductAsync(Product product)
         {
             _context.Products.Update(product);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+            return product;
         }
     }
 }
