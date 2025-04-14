@@ -44,6 +44,12 @@ public class CreditCardControllerIntegrationTest : IClassFixture<WebApplicationF
     [InlineData("4532289052809181")]
     [InlineData("5530016454538418")]
     [InlineData("5131208517986691")]
+    [InlineData("3497-7965-8312-797")]
+    [InlineData("4024-0071-6540-1778")]
+    [InlineData("345-470-784-783-010")]
+    [InlineData("3497 7965 8312 797")]
+    [InlineData("4024 0071 6540 1778")]
+    [InlineData("4532 2080 2150 4434")]
     public async Task Get_CheckCard_Successful(string CardNumber)
     {
         // arange

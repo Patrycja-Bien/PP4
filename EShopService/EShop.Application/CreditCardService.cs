@@ -20,7 +20,7 @@ namespace EShop.Application
 
             cardNumber = cardNumber.Replace(" ", "").Replace("-", "");
             if (!cardNumber.All(char.IsDigit))
-                return false;
+                throw new CardNumberInvalidException();
 
             int sum = 0;
             bool alternate = false;

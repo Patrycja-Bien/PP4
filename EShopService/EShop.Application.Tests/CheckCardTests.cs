@@ -32,7 +32,7 @@ public class CheckCardTests
     {
         //Arrange
         var card = new CreditCardService();
-        var number = "1111111111aa&&&11";
+        var number = "553001%%%45&&418";
 
         //Act & Assert
         Assert.Throws<CardNumberInvalidException>(() => card.ValidateCardNumber(number));
