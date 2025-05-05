@@ -1,0 +1,13 @@
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\bin\Debug\net8.0\User.Domain.deps.json
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\bin\Debug\net8.0\User.Domain.dll
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\bin\Debug\net8.0\User.Domain.pdb
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\obj\Debug\net8.0\User.Domain.csproj.AssemblyReference.cache
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\obj\Debug\net8.0\User.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\obj\Debug\net8.0\User.Domain.AssemblyInfoInputs.cache
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\obj\Debug\net8.0\User.Domain.AssemblyInfo.cs
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\obj\Debug\net8.0\User.Domain.csproj.CoreCompileInputs.cache
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\obj\Debug\net8.0\User.Domain.sourcelink.json
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\obj\Debug\net8.0\User.Domain.dll
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\obj\Debug\net8.0\refint\User.Domain.dll
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\obj\Debug\net8.0\User.Domain.pdb
+C:\Users\lorda\Source\Repos\.NET-Core_Course\User.Domain\obj\Debug\net8.0\ref\User.Domain.dll

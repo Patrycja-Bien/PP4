@@ -1,4 +1,4 @@
-﻿using Eshop.Application;
+﻿using EShop.Application;
 using EShop.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -17,6 +17,14 @@ namespace EShopService.Controllers
             _productService = productService;
         }
 
+
+        // GET: api/<ProductController>
+        [HttpGet]
+        public async Task<ActionResult> GetAsync()
+        {
+            var result = await _productService.GetAllAsync();
+            return Ok(result);
+        }
         // GET: api/<ProductController>
         [HttpGet]
         public async Task<ActionResult> Get()
@@ -42,7 +50,7 @@ namespace EShopService.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] Product product)
         {
-            var result = await _productService.Add(product);
+            var result = await _productService.AddAsync(product);
 
             return Ok(result);
         }
@@ -51,7 +59,7 @@ namespace EShopService.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] Product product)
         {
-            var result = await _productService.Update(product);
+            var result = await _productService.UpdateAsync(product);
 
             return Ok(result);
         }
@@ -62,7 +70,15 @@ namespace EShopService.Controllers
         {
             var product = await _productService.GetAsync(id);
             product.Deleted = true;
-            var result = await _productService.Update(product);
+            var result = await _productService.UpdateAsync(product);
+
+            return Ok(result);
+        }
+
+        [HttpPatch]
+        public ActionResult Add([FromBody] Product product)
+        {
+            var result = _productService.Add(product);
 
             return Ok(result);
         }

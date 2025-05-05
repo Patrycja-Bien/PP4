@@ -40,5 +40,12 @@ namespace EShop.Domain.Repositories
             await _context.SaveChangesAsync();
             return product;
         }
+
+        //public async Task<Product> PatchProductAsync(Product product)
+        //{
+        //    _context.Products.Patch(product);
+        //    await _context.SaveChangesAsync();
+        //    return product;
+        //}
     }
 }

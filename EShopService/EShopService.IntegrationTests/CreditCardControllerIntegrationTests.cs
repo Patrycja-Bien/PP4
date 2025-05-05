@@ -20,14 +20,11 @@ public class CreditCardControllerIntegrationTest : IClassFixture<WebApplicationF
             {
                 builder.ConfigureServices(services =>
                 {
-                    // pobranie dotychczasowej konfiguracji bazy danych
                     var dbContextOptions = services
                         .SingleOrDefault(service => service.ServiceType == typeof(DbContextOptions<DataContext>));
 
-                    //// usunięcie dotychczasowej konfiguracji bazy danych
                     services.Remove(dbContextOptions);
 
-                    // Stworzenie nowej bazy danych
                     services
                         .AddDbContext<DataContext>(options => options.UseInMemoryDatabase("MyDBForTest"));
 

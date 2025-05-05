@@ -12,7 +12,8 @@ public interface IProductRepository
     #region Product
     Task<Product> GetProductAsync(int id);
     Task<Product> AddProductAsync(Product product);
-    Task<Product> UpdateProductAsync(Product user);
+    Task<Product> UpdateProductAsync(Product product);
+    //Task<Product> PatchProductAsync(Product product);
     Task<List<Product>> GetAllProductAsync();
     #endregion
 

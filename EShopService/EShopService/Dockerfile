@@ -13,6 +13,9 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["EShopService/EShopService.csproj", "EShopService/"]
+COPY ["EShop.Application/EShop.Application.csproj", "EShop.Application/"]
+COPY ["EShop.Domain/EShop.Domain.csproj", "EShop.Domain/"]
+COPY ["EShop.Application.Tests/EShop.Application.Tests.csproj", "EShop.Application.Tests/"]
 RUN dotnet restore "./EShopService/EShopService.csproj"
 COPY . .
 WORKDIR "/src/EShopService"
